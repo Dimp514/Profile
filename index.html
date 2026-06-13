@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hemang Patel — BI Engineer</title>
+<meta name="description" content="Hemang Patel — BI Engineer & Data Engineer. Snowflake, Tableau, Python, SQL. Turning raw data into decisions." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0F1C;
+  --surface:#101729;
+  --surface-2:#141D33;
+  --ink:#E8EDF7;
+  --muted:#8A94AB;
+  --line:rgba(232,237,247,.09);
+  --cyan:#62D0E3;
+  --amber:#F2B441;
+  --cyan-dim:rgba(98,208,227,.14);
+  --amber-dim:rgba(242,180,65,.14);
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--amber);color:#0A0F1C}
+h1,h2,h3,h4{font-family:'Archivo',sans-serif;line-height:1.12}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* faint grid backdrop */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(232,237,247,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(232,237,247,.025) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+main,header,footer{position:relative;z-index:1}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(10,15,28,.82);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1120px;margin:0 auto;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.logo{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.95rem;letter-spacing:.12em}
+.logo .tick{color:var(--amber)}
+.nav-links{display:flex;gap:26px;font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.14em}
+.nav-links a{color:var(--muted);transition:color .2s}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--cyan)}
+.nav-cta{
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.1em;
+  color:var(--bg);background:var(--cyan);padding:8px 14px;border-radius:8px;font-weight:600;
+  transition:transform .15s,background .2s;
+}
+.nav-cta:hover{background:var(--amber);transform:translateY(-1px)}
+@media(max-width:720px){.nav-links{display:none}}
+
+/* ---------- HERO ---------- */
+.hero{padding:150px 0 70px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr}}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.18em;
+  color:var(--cyan);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--cyan)}
+.hero h1{
+  font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:10px;
+}
+.hero h1 .accent{color:var(--amber)}
+.hero .role{
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:clamp(1.1rem,2.4vw,1.5rem);
+  color:var(--cyan);margin-bottom:14px;
+}
+.hero .tagline{color:var(--muted);max-width:46ch;margin-bottom:30px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+.btn{
+  font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.1em;font-weight:600;
+  padding:13px 22px;border-radius:10px;transition:transform .15s,background .2s,color .2s,border-color .2s;
+  display:inline-block;
+}
+.btn-solid{background:var(--amber);color:#0A0F1C}
+.btn-solid:hover{transform:translateY(-2px);background:#ffc85e}
+.btn-ghost{border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+.stats{display:flex;gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;max-width:540px}
+.stat{flex:1;padding:18px 20px;background:var(--surface)}
+.stat+.stat{border-left:1px solid var(--line)}
+.stat .num{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.7rem;color:var(--ink)}
+.stat .num em{font-style:normal;color:var(--amber)}
+.stat .lbl{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+@media(max-width:520px){.stats{flex-direction:column}.stat+.stat{border-left:none;border-top:1px solid var(--line)}}
+
+/* pipeline panel */
+.pipeline-card{
+  background:linear-gradient(160deg,var(--surface) 0%,var(--surface-2) 100%);
+  border:1px solid var(--line);border-radius:18px;padding:26px 22px 18px;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+}
+.pipeline-card .ph{
+  display:flex;align-items:center;gap:8px;margin-bottom:14px;
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.14em;color:var(--muted);
+}
+.dot{width:9px;height:9px;border-radius:50%}
+.dot.r{background:#e0604f}.dot.y{background:var(--amber)}.dot.g{background:#5fbf7a}
+.pipeline-card svg{width:100%;height:auto;display:block}
+.pipe-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.08em;fill:var(--muted)}
+.pipe-name{font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;fill:var(--ink)}
+.node{fill:var(--surface-2);stroke:var(--line);stroke-width:1}
+.node.live{stroke:var(--cyan);stroke-opacity:.6}
+.flow{stroke:rgba(232,237,247,.16);stroke-width:1.5;fill:none}
+.packet{fill:var(--cyan)}
+.packet.alt{fill:var(--amber)}
+.pipe-status{
+  margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--muted);
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+}
+.pipe-status .ok{color:#5fbf7a}
+.blink{animation:blink 1.2s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ---------- SECTIONS ---------- */
+section{padding:90px 0}
+.sec-kicker{
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.2em;color:var(--amber);
+  text-transform:uppercase;margin-bottom:10px;
+}
+.sec-title{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;letter-spacing:-.015em;margin-bottom:42px}
+
+/* ---------- PROJECTS ---------- */
+.feature{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  padding:30px;margin-bottom:22px;position:relative;overflow:hidden;
+  transition:border-color .25s,transform .25s;
+}
+.feature:hover{border-color:rgba(98,208,227,.45);transform:translateY(-3px)}
+.feature::before{
+  content:"";position:absolute;top:0;left:0;width:4px;height:100%;
+  background:linear-gradient(var(--cyan),var(--amber));opacity:.85;
+}
+.feature .meta{
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.12em;color:var(--cyan);
+  text-transform:uppercase;margin-bottom:10px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+}
+.badge{
+  font-size:.62rem;padding:3px 9px;border-radius:999px;border:1px solid var(--amber);
+  color:var(--amber);letter-spacing:.1em;
+}
+.feature h3{font-size:1.35rem;font-weight:700;margin-bottom:10px}
+.feature p{color:var(--muted);max-width:78ch;margin-bottom:16px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{
+  font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.06em;
+  padding:4px 10px;border-radius:6px;background:var(--cyan-dim);color:var(--cyan);
+}
+.tag.warm{background:var(--amber-dim);color:var(--amber)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:8px}
+@media(max-width:760px){.proj-grid{grid-template-columns:1fr}}
+.proj-grid .feature{margin-bottom:0}
+
+/* ---------- EXPERIENCE ---------- */
+#experience{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(16,23,41,.4)}
+.timeline{position:relative;padding-left:34px}
+.timeline::before{
+  content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;
+  background:linear-gradient(var(--cyan),var(--amber));opacity:.5;
+}
+.job{position:relative;padding-bottom:46px}
+.job:last-child{padding-bottom:0}
+.job::before{
+  content:"";position:absolute;left:-31px;top:8px;width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--cyan);
+}
+.job.current::before{border-color:var(--amber);box-shadow:0 0 0 5px var(--amber-dim)}
+.job-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.job h3{font-size:1.25rem;font-weight:700}
+.live-pill{
+  font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.14em;color:#5fbf7a;
+  border:1px solid rgba(95,191,122,.5);border-radius:999px;padding:2px 10px;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.live-pill::before{content:"";width:6px;height:6px;border-radius:50%;background:#5fbf7a;animation:blink 1.4s steps(1) infinite}
+.job .org{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted);margin-bottom:14px}
+.job .org b{color:var(--cyan);font-weight:600}
+.job ul{list-style:none;margin-bottom:16px}
+.job li{color:var(--muted);padding-left:20px;position:relative;margin-bottom:8px;max-width:84ch}
+.job li::before{content:"›";position:absolute;left:0;color:var(--amber);font-family:'IBM Plex Mono',monospace}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:start}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr}}
+.about-copy p{color:var(--muted);margin-bottom:16px;max-width:60ch}
+.edu-card{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  padding:22px 24px;margin-top:22px;
+}
+.edu-card .k{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.16em;color:var(--cyan);text-transform:uppercase;margin-bottom:8px}
+.edu-card h4{font-size:1.05rem;font-weight:700;margin-bottom:4px}
+.edu-card .sub{color:var(--muted);font-size:.9rem}
+.skill-block{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:20px 22px;margin-bottom:16px}
+.skill-block .sb-head{
+  display:flex;align-items:center;gap:12px;margin-bottom:12px;
+}
+.sb-icon{
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;color:var(--amber);
+  border:1px solid var(--amber);border-radius:8px;padding:5px 9px;letter-spacing:.06em;
+}
+.skill-block h4{font-size:.98rem;font-weight:700}
+
+/* ---------- CONTACT ---------- */
+#contact{border-top:1px solid var(--line)}
+.contact-links{display:flex;gap:16px;flex-wrap:wrap}
+.contact-card{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  padding:18px 22px;min-width:220px;flex:1;transition:border-color .25s,transform .2s;
+}
+.contact-card:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.contact-card .k{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+.contact-card .v{font-weight:600;color:var(--cyan);word-break:break-all}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted)}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em}
+.foot .q{color:var(--cyan)}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .packet,.live-pill::before,.blink{animation:none !important}
+  html{scroll-behavior:auto}
+}
+a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#top">HEMANG<span class="tick">.</span>PATEL</a>
+    <div class="nav-links">
+      <a href="#projects">PROJECTS</a>
+      <a href="#experience">EXPERIENCE</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+    <a class="nav-cta" href="#contact">GET IN TOUCH</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">BI Engineer · Lowell, MA</div>
+      <h1>Hemang<br>Patel<span class="accent">.</span></h1>
+      <div class="role">Business Intelligence &amp; Data Engineer</div>
+      <p class="tagline">I build the pipelines, models, and dashboards that turn raw operational data into decisions — from source system to executive screen.</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#contact">HIRE ME</a>
+        <a class="btn btn-ghost" href="Hemang_Patel_2026Resume.pdf" download>DOWNLOAD RESUME</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num">7<em>yrs</em></div><div class="lbl">Python experience</div></div>
+        <div class="stat"><div class="num">5<em>yrs</em></div><div class="lbl">Data Engineering / Data Analytics</div></div>
+        <div class="stat"><div class="num">30<em>%+</em></div><div class="lbl">Reporting effort cut</div></div>
+      </div>
+    </div>
+
+    <div class="pipeline-card reveal">
+      <div class="ph"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>&nbsp;etl_pipeline — live</div>
+      <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg" aria-label="Animated diagram of a data pipeline: MySQL, Salesforce, and flat files ingested via Fivetran and Hevo into Snowflake and Databricks, feeding Tableau and Power BI">
+        <!-- flows -->
+        <path id="f1" class="flow" d="M100 62 C 115 62, 110 114, 124 114"/>
+        <path id="f2" class="flow" d="M100 158 C 112 158, 112 132, 124 132"/>
+        <path id="f3" class="flow" d="M100 254 C 115 254, 110 150, 124 150"/>
+        <path id="f4" class="flow" d="M222 112 C 238 112, 236 94, 250 94"/>
+        <path id="f5" class="flow" d="M222 152 C 238 152, 236 206, 250 206"/>
+        <path id="f6" class="flow" d="M348 94 L 372 94"/>
+        <path id="f7" class="flow" d="M348 206 L 372 206"/>
+        <!-- source nodes -->
+        <g>
+          <rect class="node" x="8" y="38" width="92" height="48" rx="10"/>
+          <text class="pipe-name" x="20" y="59">MySQL</text>
+          <text class="pipe-label" x="20" y="75">app database</text>
+          <rect class="node" x="8" y="134" width="92" height="48" rx="10"/>
+          <text class="pipe-name" x="20" y="155">Salesforce</text>
+          <text class="pipe-label" x="20" y="171">crm</text>
+          <rect class="node" x="8" y="230" width="92" height="48" rx="10"/>
+          <text class="pipe-name" x="20" y="251">Flat files</text>
+          <text class="pipe-label" x="20" y="267">csv / excel</text>
+        </g>
+        <!-- ingestion -->
+        <g>
+          <rect class="node live" x="124" y="94" width="98" height="76" rx="12"/>
+          <text class="pipe-name" x="138" y="118">Fivetran /</text>
+          <text class="pipe-name" x="138" y="136">Hevo</text>
+          <text class="pipe-label" x="138" y="156">ingest · sync</text>
+        </g>
+        <!-- warehouse / lakehouse -->
+        <g>
+          <rect class="node live" x="250" y="66" width="98" height="56" rx="12"/>
+          <text class="pipe-name" x="264" y="90">Snowflake</text>
+          <text class="pipe-label" x="264" y="106">warehouse</text>
+          <rect class="node live" x="250" y="178" width="98" height="56" rx="12"/>
+          <text class="pipe-name" x="264" y="202">Databricks</text>
+          <text class="pipe-label" x="264" y="218">warehouse</text>
+        </g>
+        <!-- outputs -->
+        <g>
+          <rect class="node" x="372" y="66" width="80" height="56" rx="10"/>
+          <text class="pipe-name" x="384" y="90">Tableau</text>
+          <text class="pipe-label" x="384" y="106">dashboards</text>
+          <rect class="node" x="372" y="178" width="80" height="56" rx="10"/>
+          <text class="pipe-name" x="384" y="202">Power BI</text>
+          <text class="pipe-label" x="384" y="218">reporting</text>
+        </g>
+        <!-- packets -->
+        <circle class="packet" r="3.5"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#f1"/></animateMotion></circle>
+        <circle class="packet alt" r="3.5"><animateMotion dur="4s" begin="0.6s" repeatCount="indefinite"><mpath href="#f2"/></animateMotion></circle>
+        <circle class="packet" r="3.5"><animateMotion dur="3.6s" begin="1.2s" repeatCount="indefinite"><mpath href="#f3"/></animateMotion></circle>
+        <circle class="packet alt" r="3.5"><animateMotion dur="2.6s" begin="0.3s" repeatCount="indefinite"><mpath href="#f4"/></animateMotion></circle>
+        <circle class="packet" r="3.5"><animateMotion dur="2.8s" begin="1.5s" repeatCount="indefinite"><mpath href="#f5"/></animateMotion></circle>
+        <circle class="packet" r="3.5"><animateMotion dur="2.2s" begin="0.9s" repeatCount="indefinite"><mpath href="#f6"/></animateMotion></circle>
+        <circle class="packet alt" r="3.5"><animateMotion dur="2.4s" begin="1.8s" repeatCount="indefinite"><mpath href="#f7"/></animateMotion></circle>
+      </svg>
+      <div class="pipe-status">
+        <span><span class="ok">●</span> sync: healthy</span>
+        <span>rows/day: 2.4M</span>
+        <span>latency: 14m<span class="blink">_</span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-kicker reveal">— Selected Work —</div>
+    <h2 class="sec-title reveal">Projects</h2>
+
+    <article class="feature reveal">
+      <div class="meta">▸ Featured · 2024 <span class="badge">PRODUCTION</span></div>
+      <h3>Canadian BI Product Launch</h3>
+      <p>Led the technical delivery of enterprise BI for 30+ Canadian healthcare agencies. Designed and implemented the end-to-end data pipeline — MySQL → Fivetran → Snowflake — and built Tableau dashboards embedded directly in the AxisCare application, delivering self-service analytics while enforcing compliance with Canadian healthcare data privacy regulations (PIPEDA). Cut ad hoc reporting requests from customers and supported international scale.</p>
+      <div class="tags"><span class="tag">Snowflake</span><span class="tag">Fivetran</span><span class="tag">MySQL</span><span class="tag">Tableau</span><span class="tag warm">PIPEDA Compliance</span><span class="tag warm">Embedded Analytics</span></div>
+    </article>
+
+    <article class="feature reveal">
+      <div class="meta">Machine Learning · Corning Life Sciences</div>
+      <h3>Buyer Identity Resolution — Naive Bayes</h3>
+      <p>Built a Categorical Naive Bayes model to identify buyers behind masked third-party sales data, linking anonymized transactions to historical sales using geolocation, order quantity, item mix, and order amounts. Gave sales and product teams visibility into demand that was previously invisible behind distributor masking.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag warm">Classification</span><span class="tag warm">Entity Resolution</span></div>
+    </article>
+
+    <article class="feature reveal">
+      <div class="meta">Forecasting &amp; Automation · 2022</div>
+      <h3>Production Capacity Forecasting</h3>
+      <p>Engineered automated ingestion workflows with Pandas and Selenium to collect backorder volumes, monthly demand forecasts, current production capacity, and planned capacity increases across 20+ product lines. Built Power BI dashboards with scenario modeling so stakeholders could quantify how capacity expansion would resolve backorders and improve demand fulfillment.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Selenium</span><span class="tag">Power BI</span><span class="tag warm">Scenario Modeling</span></div>
+    </article>
+
+    <div class="proj-grid">
+      <article class="feature reveal">
+        <div class="meta">Personal · Algorithmic Trading</div>
+        <h3>Bitcoin Hourly Trading Bot</h3>
+        <p>Hourly trading bot that screens for potentially undervalued contracts using MACD and RSI indicators, executing on signal crossovers. Built in JavaScript with Claude Code as a pair programmer. Net profit to date: ~$3,000.</p>
+        <div class="tags"><span class="tag">JavaScript</span><span class="tag">MACD / RSI</span><span class="tag warm">Claude Code</span></div>
+      </article>
+
+      <article class="feature reveal">
+        <div class="meta">Personal · Automation</div>
+        <h3>Retail Restock Order Bot</h3>
+        <p>Automation that watches high-demand items, polls stock availability across major retailers like Target, Best Buy, and Walmart, and places orders the moment inventory drops — so a restock is never missed.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Selenium</span><span class="tag warm">Web Automation</span></div>
+      </article>
+
+      <article class="feature reveal">
+        <div class="meta">Client Work · AI Agents</div>
+        <h3>Local AI Agent Deployments</h3>
+        <p>Installed and configured local AI agents — OpenClaw AI and Project Odysseus — on 5 client PCs, building custom skills to improve day-to-day workflows: email monitoring, task automation, and more.</p>
+        <div class="tags"><span class="tag">OpenClaw AI</span><span class="tag">Project Odysseus</span><span class="tag warm">Agent Skills</span><span class="tag warm">Workflow Automation</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-kicker reveal">— Professional History —</div>
+    <h2 class="sec-title reveal">Experience</h2>
+
+    <div class="timeline">
+      <div class="job current reveal">
+        <div class="job-head"><h3>BI Engineer</h3><span class="live-pill">CURRENT</span></div>
+        <div class="org"><b>AxisCare</b> · Remote (Waco, TX) · Jan 2024 – Present</div>
+        <ul>
+          <li>Design, develop, and maintain Tableau dashboards supporting 80+ home healthcare agencies, delivering operational, financial, and performance insights to business and executive stakeholders.</li>
+          <li>Lead end-to-end requirements gathering, technical discovery, and client-facing demos — translating business needs into scalable BI and analytics solutions.</li>
+          <li>Provide Tier 1–2 BI production support, resolving data quality, performance, and reporting issues to keep dashboards reliable and highly available.</li>
+          <li>Develop and optimize Python and SQL data processing scripts to improve ETL efficiency, enhance data reliability, and reduce processing overhead.</li>
+          <li>Collaborate cross-functionally with Product, Engineering, and Data teams to define KPIs, standardize data models, and deliver analytics initiatives aligned with the roadmap.</li>
+        </ul>
+        <div class="tags"><span class="tag">Tableau</span><span class="tag">Snowflake</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Fivetran</span></div>
+      </div>
+
+      <div class="job reveal">
+        <div class="job-head"><h3>Data Engineer</h3></div>
+        <div class="org"><b>Corning Life Sciences</b> · Tewksbury, MA · Jul 2021 – Dec 2023</div>
+        <ul>
+          <li>Engineered and maintained Python- and SQL-based ETL pipelines ingesting data from 6+ heterogeneous sources, powering analytics across multiple product lines and leadership teams.</li>
+          <li>Automated Power BI and Excel reporting pipelines plus scheduled web-scraping workflows, cutting manual reporting effort and increasing operational efficiency by 30%+ for Product Line Managers.</li>
+          <li>Partnered with 10+ Business Managers and Directors across Finance, Operations, Supply Chain, and Product to define KPIs and deliver data-driven insights for planning.</li>
+          <li>Supported machine learning and predictive analytics initiatives by preparing, validating, and transforming large datasets for model readiness.</li>
+          <li>Improved data reliability and scalability by standardizing ETL workflows, reporting logic, and documentation — reducing recurring data issues.</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">ETL</span><span class="tag">Web Scraping</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-kicker reveal">— Who I Am —</div>
+    <h2 class="sec-title reveal">About Me</h2>
+
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>I'm Hemang — a BI Engineer based in Lowell, Massachusetts. I work across the full analytics stack: architecting pipelines on Snowflake and Fivetran, modeling data with Python and SQL, and shipping the Tableau and Power BI dashboards that executives actually use to run the business.</p>
+        <p>I've delivered analytics for 110+ healthcare agencies across the US and Canada, automated away a third of a product team's manual reporting, and built ML models that recovered buyer signal from masked sales data. Outside of work, I build trading bots and automation tools — because the best way to learn a stack is to ship something with it.</p>
+        <div class="edu-card">
+          <div class="k">Education</div>
+          <h4>B.S.B.A — Management Information Systems</h4>
+          <div class="sub">University of Massachusetts Lowell · Lowell, MA · Class of 2020</div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="skill-block">
+          <div class="sb-head"><span class="sb-icon">ETL</span><h4>Data Engineering</h4></div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">PySpark</span><span class="tag">Snowpark</span><span class="tag">Fivetran</span><span class="tag">Hevo</span><span class="tag">Selenium</span></div>
+        </div>
+        <div class="skill-block">
+          <div class="sb-head"><span class="sb-icon">DWH</span><h4>Cloud &amp; Warehousing</h4></div>
+          <div class="tags"><span class="tag">Snowflake</span><span class="tag">Azure Databricks</span><span class="tag">MySQL</span></div>
+        </div>
+        <div class="skill-block">
+          <div class="sb-head"><span class="sb-icon">VIZ</span><h4>BI &amp; Visualization</h4></div>
+          <div class="tags"><span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">KPI Design</span></div>
+        </div>
+        <div class="skill-block">
+          <div class="sb-head"><span class="sb-icon">ML</span><h4>ML &amp; Analytics</h4></div>
+          <div class="tags"><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">Predictive Analytics</span></div>
+        </div>
+        <div class="skill-block">
+          <div class="sb-head"><span class="sb-icon">SYS</span><h4>Enterprise Systems</h4></div>
+          <div class="tags"><span class="tag">Salesforce</span><span class="tag">SAP</span><span class="tag">Oracle PeopleSoft</span><span class="tag">Zendesk</span><span class="tag">Jira</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-kicker reveal">— Let's Connect —</div>
+    <h2 class="sec-title reveal">Contact</h2>
+
+    <div class="contact-links">
+      <a class="contact-card reveal" href="mailto:h.patel.mis@gmail.com">
+        <div class="k">Email</div><div class="v">h.patel.mis@gmail.com</div>
+      </a>
+      <a class="contact-card reveal" href="tel:+19784063855">
+        <div class="k">Phone</div><div class="v">978-406-3855</div>
+      </a>
+      <a class="contact-card reveal" href="https://www.linkedin.com/in/hemang-patel/" target="_blank" rel="noopener">
+        <div class="k">LinkedIn</div><div class="v">/in/hemang-patel</div>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>HEMANG<span class="q">.</span>PATEL</span>
+    <span>© 2026 Hemang Patel</span>
+  </div>
+</footer>
+
+<script>
+// scroll reveal
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
